@@ -6,4 +6,4 @@ cart_add:
 cart_list:
     path: /cart
     controller: App\MyTheresaCart\Application\Controller\CartController::list
-    methods: GET|HEAD
+    methods: GET
