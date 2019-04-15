@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tests\Controller;
+namespace App\Tests\MyTheresaCart\Application\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

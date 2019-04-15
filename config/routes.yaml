@@ -1,9 +1,9 @@
 cart_add:
     path: /cart
-    controller: App\Controller\CartController::add
+    controller: App\MyTheresaCart\Application\Controller\CartController::add
     methods: POST
 
 cart_list:
     path: /cart
-    controller: App\Controller\CartController::list
+    controller: App\MyTheresaCart\Application\Controller\CartController::list
     methods: GET|HEAD
