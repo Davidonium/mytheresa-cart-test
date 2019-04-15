@@ -1,3 +1,9 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+cart_add:
+    path: /cart
+    controller: App\Controller\CartController::add
+    methods: POST
+
+cart_list:
+    path: /cart
+    controller: App\Controller\CartController::list
+    methods: GET|HEAD

@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+    php:
+        container_name: php-fpm
+        build: ./php-fpm
+        ports:
+            - "9001:9001"
+        expose:
+          - "9000"
+        volumes:
+            - ..:/var/www/mytheresa-cart:cached
+    nginx:
+        container_name: nginx
+        build: ./nginx
+        ports:
+            - "80:80"
+        links:
+            - php
+        volumes:
+            - ./logs/nginx:/var/log/nginx:cached
+            - ..:/var/www/mytheresa-cart:cached
