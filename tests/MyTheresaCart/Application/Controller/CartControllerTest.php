@@ -15,4 +15,12 @@ class CartControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
+
+    public function testAddCartReturnsOK()
+    {
+        $client  = static::createClient();
+        $client->request('POST', '/cart');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
 }

@@ -7,7 +7,7 @@ namespace App\MyTheresaCart\Application\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class CartController
+final class CartController
 {
     public function add(): Response
     {
