@@ -21,9 +21,9 @@ final class InMemoryUserRepository implements UserRepository
      */
     public function __construct()
     {
-        $this->users[] = new User(new UserId(1), "david.hernando@mytheresa.com", "memorypassword");
+        $id = 1;
+        $this->users[$id] = new User(new UserId($id), "david.hernando@mytheresa.com", "memorypassword", "randomgeneratedtoken");
     }
-
 
     public function byEmail(string $email): ?User
     {
@@ -38,13 +38,27 @@ final class InMemoryUserRepository implements UserRepository
 
     public function byId(UserId $id): ?User
     {
+        if (isset($this->users[$id->id()])) {
+            return $this->users[$id->id()];
+        }
+
+        return null;
+    }
+
+    public function byToken(string $token): ?User
+    {
         foreach ($this->users as $user) {
-            if ($user->id()->equals($id)) {
+            if ($user->token() === $token) {
                 return $user;
             }
         }
 
         return null;
+    }
+
+    public function save(User $user)
+    {
+        $this->users[$user->id()->id()] = $user;
     }
 
 }

@@ -18,18 +18,29 @@ final class User
      * @var string
      */
     private $password;
+    /**
+     * @var string|null
+     */
+    private $token;
 
     /**
      * User constructor.
      * @param UserId $id
-     * @param $email
-     * @param $password
+     * @param string $email
+     * @param string $password
+     * @param string|null $token
      */
-    public function __construct(UserId $id, string $email, string $password)
+    public function __construct(
+        UserId $id,
+        string $email,
+        string $password,
+        ?string $token = null
+    )
     {
         $this->id = $id;
         $this->setEmail($email);
         $this->changePassword($password);
+        $this->token = $token;
     }
 
     /**
@@ -56,13 +67,27 @@ final class User
         return $this->password;
     }
 
+    public function token(): string
+    {
+        return $this->token;
+    }
+
     public function changePassword(string $password)
     {
         if (empty($password)) {
             throw new \InvalidArgumentException('Invalid password');
         }
 
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_BCRYPT);
+    }
+
+    public function changeToken(string $token)
+    {
+        if (empty($token)) {
+            throw new \InvalidArgumentException('Invalid password');
+        }
+
+        $this->token = $token;
     }
 
     private function setEmail(string $email)
