@@ -56,6 +56,15 @@ final class User
         return $this->password;
     }
 
+    public function changePassword(string $password)
+    {
+        if (empty($password)) {
+            throw new \InvalidArgumentException('Invalid password');
+        }
+
+        $this->password = $password;
+    }
+
     private function setEmail(string $email)
     {
         $email = trim($email);
@@ -64,14 +73,5 @@ final class User
         }
 
         $this->email = $email;
-    }
-
-    public function changePassword(string $password)
-    {
-        if (empty($password)) {
-            throw new \InvalidArgumentException('Invalid password');
-        }
-
-        $this->password = $password;
     }
 }
