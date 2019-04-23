@@ -28,8 +28,8 @@ final class User
     public function __construct(UserId $id, string $email, string $password)
     {
         $this->id = $id;
-        $this->email = $email;
-        $this->password = $password;
+        $this->setEmail($email);
+        $this->changePassword($password);
     }
 
     /**
@@ -54,5 +54,24 @@ final class User
     public function password(): string
     {
         return $this->password;
+    }
+
+    private function setEmail(string $email)
+    {
+        $email = trim($email);
+        if (empty($email)) {
+            throw new \InvalidArgumentException('Invalid email');
+        }
+
+        $this->email = $email;
+    }
+
+    public function changePassword(string $password)
+    {
+        if (empty($password)) {
+            throw new \InvalidArgumentException('Invalid password');
+        }
+
+        $this->password = $password;
     }
 }
