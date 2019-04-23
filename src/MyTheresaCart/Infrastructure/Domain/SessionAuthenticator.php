@@ -6,11 +6,11 @@ namespace App\MyTheresaCart\Infrastructure\Domain;
 
 use App\MyTheresaCart\Domain\Model\Authenticator;
 use App\MyTheresaCart\Domain\Model\User\User;
+use App\MyTheresaCart\Domain\Model\User\UserId;
 use App\MyTheresaCart\Domain\Model\User\UserRepository;
 use App\MyTheresaCart\Domain\Model\User\UserToken;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use App\MyTheresaCart\Domain\Model\User\UserId;
 
 final class SessionAuthenticator extends Authenticator
 {
