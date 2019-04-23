@@ -40,7 +40,7 @@ final class User
         $this->id = $id;
         $this->setEmail($email);
         $this->changePassword($password);
-        $this->token = $token;
+        $this->changeToken($token);
     }
 
     /**
@@ -84,7 +84,7 @@ final class User
     public function changeToken(string $token)
     {
         if (empty($token)) {
-            throw new \InvalidArgumentException('Invalid password');
+            throw new \InvalidArgumentException('Invalid token');
         }
 
         $this->token = $token;
