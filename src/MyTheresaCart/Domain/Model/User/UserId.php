@@ -18,7 +18,7 @@ final class UserId
         $this->id = $id;
     }
 
-    public function id(): int
+    public function id(): ?int
     {
         return $this->id;
     }
