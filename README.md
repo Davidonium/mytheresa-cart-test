@@ -45,9 +45,15 @@ curl -X PUT \
   -H 'Content-Type: application/json' \
   -H 'content-length: 19' \
   -d '{
-	"productId": 1
+    "productId": 1
 }'
 ```
+
+At first I developed a session based authentication but I scraped it because being a REST API using 
+session based authentication made no sense. So I developed a simple token based authentication.
+
+The docker images I developed are focused on development and for the testers. 
+Another docker deployment images should be created for the deployment of this app.
 
 
 
