@@ -15,7 +15,7 @@ final class UserId
      */
     public function __construct(?int $id = null)
     {
-        $this->id = $id;
+        $this->id = $id ?? random_int(1, 100000);
     }
 
     public function id(): ?int

@@ -5,8 +5,9 @@ namespace App\MyTheresaCart\Application\Service;
 
 
 use App\MyTheresaCart\Domain\Model\Authenticator;
+use App\MyTheresaCart\Domain\Model\Shop\Product;
 
-final class SigninUserService
+final class ViewCartProductsService
 {
     /**
      * @var Authenticator
@@ -14,7 +15,7 @@ final class SigninUserService
     private $authenticator;
 
     /**
-     * SigninUserService constructor.
+     * ViewProductsOfCartService constructor.
      * @param Authenticator $authenticator
      */
     public function __construct(Authenticator $authenticator)
@@ -22,8 +23,13 @@ final class SigninUserService
         $this->authenticator = $authenticator;
     }
 
-    public function execute(string $email, string $password): bool
+    /**
+     * @return Product[]
+     */
+    public function execute(): array
     {
-        return $this->authenticator->authenticate($email, $password);
+        $currentUser = $this->authenticator->currentUserOrThrow();
+
+        return $currentUser->cart()->products();
     }
 }

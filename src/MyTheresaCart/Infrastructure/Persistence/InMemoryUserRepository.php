@@ -4,6 +4,9 @@
 namespace App\MyTheresaCart\Infrastructure\Persistence;
 
 
+use App\MyTheresaCart\Domain\Model\Shop\Cart;
+use App\MyTheresaCart\Domain\Model\Shop\Product;
+use App\MyTheresaCart\Domain\Model\Shop\ProductId;
 use App\MyTheresaCart\Domain\Model\User\User;
 use App\MyTheresaCart\Domain\Model\User\UserId;
 use App\MyTheresaCart\Domain\Model\User\UserRepository;
@@ -22,7 +25,16 @@ final class InMemoryUserRepository implements UserRepository
     public function __construct()
     {
         $id = 1;
-        $this->users[$id] = new User(new UserId($id), "david.hernando@mytheresa.com", "memorypassword", "randomgeneratedtoken");
+        $userId = new UserId($id);
+        $order = new Cart($userId);
+        $order->addProduct(new Product(new ProductId(2), "Shoes that my girlfriend wants", 300000));
+        $this->users[$id] = new User(
+            $userId,
+            "david.hernando@mytheresa.com",
+            "memorypassword",
+            "randomgeneratedtoken",
+            $order
+        );
     }
 
     public function byEmail(string $email): ?User

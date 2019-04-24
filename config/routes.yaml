@@ -1,10 +1,10 @@
 cart_add:
-    path: /cart
+    path: /cart/product/add
     controller: App\MyTheresaCart\Application\Controller\CartController::add
-    methods: POST
+    methods: PUT
 
 cart_list:
-    path: /cart
+    path: /cart/product
     controller: App\MyTheresaCart\Application\Controller\CartController::list
     methods: GET
 

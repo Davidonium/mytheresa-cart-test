@@ -16,7 +16,7 @@ class UserTest extends TestCase
 
         $user->changePassword("test-password2");
 
-        $this->assertEquals("test-password2", $user->password());
+        $this->assertTrue(password_verify("test-password2", $user->password()));
     }
 
     /**

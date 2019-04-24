@@ -6,7 +6,7 @@ namespace App\MyTheresaCart\Infrastructure\Domain;
 
 use App\MyTheresaCart\Domain\Model\Authenticator;
 use App\MyTheresaCart\Domain\Model\User\User;
-use App\MyTheresaCart\Domain\Model\User\UserId;
+use App\MyTheresaCart\Domain\Model\User\UserNotSignedInException;
 use App\MyTheresaCart\Domain\Model\User\UserRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -45,15 +45,6 @@ class TokenBasedAuthenticator implements Authenticator
         $this->requestStack = $requestStack;
         $this->userRepository = $userRepository;
         $this->tokenGenerator = $tokenGenerator;
-    }
-
-    public function currentUserId(): ?UserId
-    {
-        if ($this->currentUser()) {
-            return $this->currentUser()->id();
-        }
-
-        return null;
     }
 
     public function authenticate(string $email, string $password): bool
@@ -97,6 +88,18 @@ class TokenBasedAuthenticator implements Authenticator
 
         return $currentUser;
     }
+
+    public function currentUserOrThrow(): User
+    {
+        $currentUser = $this->currentUser();
+
+        if (!$currentUser) {
+            throw new UserNotSignedInException();
+        }
+
+        return $currentUser;
+    }
+
 
     private function persistAuthentication(User $user)
     {

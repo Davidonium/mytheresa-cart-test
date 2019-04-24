@@ -4,6 +4,8 @@
 namespace App\MyTheresaCart\Domain\Model\User;
 
 
+use App\MyTheresaCart\Domain\Model\Shop\Cart;
+
 final class User
 {
     /**
@@ -24,6 +26,11 @@ final class User
     private $token;
 
     /**
+     * @var Cart
+     */
+    private $order;
+
+    /**
      * User constructor.
      * @param UserId $id
      * @param string $email
@@ -34,13 +41,15 @@ final class User
         UserId $id,
         string $email,
         string $password,
-        ?string $token = null
+        ?string $token = null,
+        ?Cart $cart = null
     )
     {
         $this->id = $id;
         $this->setEmail($email);
         $this->changePassword($password);
         $this->changeToken($token);
+        $this->order = $cart ?? new Cart($this->id());
     }
 
     /**
@@ -81,13 +90,14 @@ final class User
         $this->password = password_hash($password, PASSWORD_BCRYPT);
     }
 
-    public function changeToken(string $token)
+    public function changeToken(?string $token)
     {
-        if (empty($token)) {
-            throw new \InvalidArgumentException('Invalid token');
-        }
-
         $this->token = $token;
+    }
+
+    public function cart(): Cart
+    {
+        return $this->order;
     }
 
     private function setEmail(string $email)
