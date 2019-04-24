@@ -4,7 +4,9 @@
 namespace App\MyTheresaCart\Domain\Model\Shop;
 
 
-class ProductNotFoundException extends \Exception
+use App\MyTheresaCart\Domain\Model\MyTheresaCartDomainException;
+
+class ProductNotFoundException extends MyTheresaCartDomainException
 {
 
 }
