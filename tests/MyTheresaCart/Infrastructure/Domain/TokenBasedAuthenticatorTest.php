@@ -80,8 +80,6 @@ class TokenBasedAuthenticatorTest extends TestCase
         $this->authenticator->authenticate($this->existingEmail, $this->existingPassword);
         $user = $this->authenticator->currentUser();
         $this->assertNotNull($user);
-        $this->assertNotNull($this->authenticator->currentUserId());
-        $this->assertNotNull($this->authenticator->currentUserId()->id());
         $this->assertEquals($this->existingEmail, $user->email());
     }
 }

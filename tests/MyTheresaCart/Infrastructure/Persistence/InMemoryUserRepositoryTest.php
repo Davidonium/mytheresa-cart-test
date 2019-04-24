@@ -8,7 +8,7 @@ use App\MyTheresaCart\Domain\Model\User\UserId;
 use App\MyTheresaCart\Infrastructure\Persistence\InMemoryUserRepository;
 use PHPUnit\Framework\TestCase;
 
-class InMemoryuserRepositoryTest extends TestCase
+class InMemoryUserRepositoryTest extends TestCase
 {
     /**
      * @var InMemoryUserRepository
@@ -21,7 +21,7 @@ class InMemoryuserRepositoryTest extends TestCase
     }
 
 
-    public function testfindByEmailIsSuccessful()
+    public function testFindByEmailIsSuccessful()
     {
         $emailToTest = "david.hernando@mytheresa.com";
         $user = $this->userRepository->byEmail($emailToTest);
