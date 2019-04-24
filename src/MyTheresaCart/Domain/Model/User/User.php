@@ -36,6 +36,7 @@ final class User
      * @param string $email
      * @param string $password
      * @param string|null $token
+     * @param Cart|null $cart
      */
     public function __construct(
         UserId $id,

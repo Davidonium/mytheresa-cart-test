@@ -25,6 +25,9 @@ class InMemoryProductRepository implements ProductRepository
 
     public function byId(ProductId $productId): ?Product
     {
+        if (!isset($this->products[$productId->id()])) {
+            return null;
+        }
         return $this->products[$productId->id()];
     }
 
