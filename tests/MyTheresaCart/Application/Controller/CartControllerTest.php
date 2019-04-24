@@ -73,6 +73,6 @@ class CartControllerTest extends WebTestCase
             json_encode(['productId' => 123131231])
         );
 
-        $this->assertEquals(401, $client->getResponse()->getStatusCode());
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
     }
 }
