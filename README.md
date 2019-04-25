@@ -1,7 +1,7 @@
 # MyTheresa Cart Test
 
 I have developed the test following DDD principles and structure from 
-DDD in php book from Carlos Buenosvinos
+DDD in php book from Carlos Buenosvinos.
 The Application only uses InMemory repositories with prefilled data, so the data 
 is not persisted through requests, but a different implementation 
 can be developed and added with minimal changes to the existing code.
@@ -19,8 +19,6 @@ docker-compose exec php php bin/phpunit
 ```
 
 The application listens on port 80 by default. It can be changed in docker/docker-compose.yml.
-
-The application has 2 endpoints
 
 To add a product to the current user's cart:
 PUT /cart/product/add
