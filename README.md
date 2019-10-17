@@ -1,7 +1,6 @@
 # MyTheresa Cart Test
 
-I have developed the test following DDD principles and structure from 
-DDD in php book from Carlos Buenosvinos.
+I have developed the test following DDD and hexagonal architecture principles.
 The Application only uses InMemory repositories with prefilled data, so the data 
 is not persisted through requests, but a different implementation 
 can be developed and added with minimal changes to the existing code.
